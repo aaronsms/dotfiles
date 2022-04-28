@@ -115,12 +115,12 @@ lvim.builtin.alpha.active = false
 lvim.builtin.dap.active = true
 
 -- LSP settings
-lvim.lsp.automatic_servers_installation = false
+lvim.lsp.automatic_servers_installation = true
 -- vim.list_extend(lvim.lsp.automatic_configuration.skipped_servers, { "volar" })
 
 -- manually setup a server
-local opts = {}
-require("lvim.lsp.manager").setup("volar", opts)
+-- local opts = {}
+-- require("lvim.lsp.manager").setup("volar", opts)
 
 -- custom on_attach function for all the language servers
 -- lvim.lsp.on_attach_callback = function(client, bufnr)
