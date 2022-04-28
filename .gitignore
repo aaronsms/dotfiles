@@ -2,3 +2,4 @@ zsh/.config/zsh/plugins/
 
 zsh/.config/zsh/.zcompdump
 zsh/.config/zsh/.zsh_history
+lvim/.config/lvim/plugin/packer_compiled.lua
