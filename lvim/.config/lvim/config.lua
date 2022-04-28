@@ -183,4 +183,5 @@ lvim.plugins = {
 	{ "vlime/vlime",
     rtp = "vim/"
   },
+  { "github/copilot.vim" }
 }
