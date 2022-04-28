@@ -1,0 +1,9 @@
+[submodule "zsh/plugins/zsh-autosuggestions"]
+	path = zsh/plugins/zsh-autosuggestions
+	url = https://github.com/zsh-users/zsh-autosuggestions.git
+[submodule "tmux/tmux/tmux-resurrect"]
+	path = tmux/tmux/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect
+[submodule "tmux/.config/tmux/tmux-resurrect"]
+	path = tmux/.config/tmux/tmux-resurrect
+	url = https://github.com/tmux-plugins/tmux-resurrect

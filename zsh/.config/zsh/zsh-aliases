@@ -1,0 +1,47 @@
+#!/bin/sh
+
+alias j="journal"
+alias n="note"
+alias ldown='cd ~/luminus-downloader && nvm run 16 main.js && pd'
+alias ariad="aria2c --conf-path=\$HOME/.config/aria2/aria2.daemon"
+alias rc="cd ~/current && lfcd"
+alias rn="cd ~/notes && lfcd"
+alias lg="lazygit"
+alias xo="xdg-open"
+alias ta="tmux attach 2>/dev/null || tmux"
+alias tk="tmux kill-server 2>/dev/null"
+alias ez="exec zsh"
+alias ssh="kitty +kitten ssh"
+
+[ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
+[ -f "$XINITRC" ] && alias startx='startx $XINITRC'
+
+for command in mount umount sv pacman updatedb su shutdown poweroff reboot wpa_cli ; do
+	alias $command="sudo $command"
+done; unset command
+
+alias \
+	cp="cp -iv" \
+	mv="mv -iv" \
+	rm="rm -vI" \
+	bc="bc -ql" \
+	mkd="mkdir -pv" \
+  lf="lfub" \
+	yt="yt-dlp --add-metadata -i" \
+	yta="yt -x -f bestaudio/best" \
+	ffmpeg="ffmpeg -hide_banner" \
+  pd="popd" \
+	ka="killall" \
+	g="git" \
+	trem="transmission-remote" \
+	YT="youtube-viewer" \
+	sdn="shutdown -h now" \
+	e='$EDITOR' \
+	v='$EDITOR' \
+	p="pacman" \
+	z="zathura" \
+	ls="ls -hN --color=auto --group-directories-first" \
+	grep="grep --color=auto" \
+	diff="diff --color=auto" \
+	ccat="highlight --out-format=ansi" \
+	ref="shortcuts >/dev/null; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/shortcutrc ; source ${XDG_CONFIG_HOME:-$HOME/.config}/shell/zshnameddirrc"
