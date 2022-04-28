@@ -17,7 +17,7 @@ HISTFILE=~/.cache/zsh/history
 zstyle ':completion:*' completer _complete _ignored _correct _approximate
 zstyle ':completion:*' max-errors 2
 zstyle ':completion:*' menu select
-zstyle :compinstall filename '/home/aaronsms/.config/zsh/.zshrc'
+zstyle :compinstall filename "$HOME/.config/zsh/.zshrc"
 
 autoload -Uz compinit
 compinit
