@@ -1,2 +1,2 @@
-. "/home/aaronsms/.local/share/cargo/env"
-. "/home/aaronsms/.gvm/scripts/gvm"
+[ -f "$HOME/.local/share/cargo/env" ] && . "$HOME/.local/share/cargo/env"
+[ -f "$HOME/.gvm/scripts/gvm" ] && . "$HOME/.gvm/scripts/gvm"
