@@ -52,6 +52,7 @@ lvim.keys.normal_mode["ts"] = { "<cmd>setlocal spell!<cr>", { noremap = true } }
 lvim.keys.normal_mode["tl"] = { "<cmd>setlocal list!<cr>", { noremap = true } }
 lvim.keys.normal_mode["tg"] = { "<cmd>Goyo<cr>", { noremap = true } }
 lvim.keys.normal_mode["tc"] = { "<cmd>lua vim.g.cmp_toggle_flag=not vim.g.cmp_toggle_flag<cr>", { noremap = true } }
+lvim.keys.normal_mode["tr"] = { "<cmd>LspRestart<cr>", { noremap = true } }
 
 lvim.keys.normal_mode["<c-f>"] = { "<cmd>lua require('harpoon.mark').add_file()<cr>", { noremap = true } }
 lvim.keys.normal_mode["<c-s>"] = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>", { noremap = true } }
@@ -184,6 +185,5 @@ lvim.plugins = {
   },
   { "vlime/vlime",
     rtp = "vim/"
-  },
-  { "github/copilot.vim" }
+  }
 }
