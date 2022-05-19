@@ -13,7 +13,6 @@ alias ta="tmux attach 2>/dev/null || tmux"
 alias tk="tmux kill-server 2>/dev/null"
 alias ez="exec zsh"
 alias ssh="kitty +kitten ssh"
-alias earphone="bluetoothctl power on && bluetoothctl connect 10:E4:C2:CA:70:50"
 
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 [ -f "$XINITRC" ] && alias startx='startx $XINITRC'

@@ -10,9 +10,11 @@ export NVM_LAZY_LOAD=true
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('lvim' 'nvim' 'j' 'n')
 
 if [[ "$OSTYPE" == linux-gnu ]]; then
-    export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"/home/aaronsms/.local/share/lunarvim"}"
-    export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/home/aaronsms/.config/lvim"}"
-    export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/home/aaronsms/.cache/nvim"}"
+    export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"$HOME/.local/share/lunarvim"}"
+    export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"$HOME/.config/lvim"}"
+    export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"$HOME/.cache/nvim"}"
+    export PNPM_HOME="$HOME/.local/share/pnpm"
+    export PATH="$PNPM_HOME:$PATH"
 else
     export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"/Users/aaron.sawms/.local/share/lunarvim"}"
     export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/Users/aaron.sawms/.config/lvim"}"
