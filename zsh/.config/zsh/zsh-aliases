@@ -22,6 +22,12 @@ for command in mount umount sv pacman updatedb su shutdown poweroff reboot wpa_c
 	alias $command="sudo $command"
 done; unset command
 
+if [[ "$OSTYPE" == linux-gnu ]]; then
+alias ls="ls -h --color=auto --group-directories-first"
+else
+alias ls="gls -h --color=auto --group-directories-first"
+fi
+
 alias \
 	cp="cp -iv" \
 	mv="mv -iv" \
@@ -42,7 +48,6 @@ alias \
 	v='$EDITOR' \
 	p="pacman" \
 	z="zathura" \
-	ls="ls -hN --color=auto --group-directories-first" \
 	grep="grep --color=auto" \
 	diff="diff --color=auto" \
 	ccat="highlight --out-format=ansi" \

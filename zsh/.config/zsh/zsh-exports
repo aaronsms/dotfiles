@@ -9,8 +9,14 @@ export ZSH_PYENV_LAZY_VIRTUALENV=true
 export NVM_LAZY_LOAD=true
 export NVM_LAZY_LOAD_EXTRA_COMMANDS=('lvim' 'nvim' 'j' 'n')
 
-export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"/home/aaronsms/.local/share/lunarvim"}"
-export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/home/aaronsms/.config/lvim"}"
-export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/home/aaronsms/.cache/nvim"}"
-export PNPM_HOME="/Users/aaron.sawms/Library/pnpm"
-export PATH="$PNPM_HOME:$PATH"
+if [[ "$OSTYPE" == linux-gnu ]]; then
+    export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"/home/aaronsms/.local/share/lunarvim"}"
+    export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/home/aaronsms/.config/lvim"}"
+    export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/home/aaronsms/.cache/nvim"}"
+else
+    export LUNARVIM_RUNTIME_DIR="${LUNARVIM_RUNTIME_DIR:-"/Users/aaron.sawms/.local/share/lunarvim"}"
+    export LUNARVIM_CONFIG_DIR="${LUNARVIM_CONFIG_DIR:-"/Users/aaron.sawms/.config/lvim"}"
+    export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/Users/aaron.sawms/.cache/nvim"}"
+    export PNPM_HOME="/Users/aaron.sawms/Library/pnpm"
+    export PATH="$PNPM_HOME:$PATH"
+fi
