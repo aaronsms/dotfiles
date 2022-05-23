@@ -21,4 +21,6 @@ else
     export LUNARVIM_CACHE_DIR="${LUNARVIM_CACHE_DIR:-"/Users/aaron.sawms/.cache/nvim"}"
     export PNPM_HOME="/Users/aaron.sawms/Library/pnpm"
     export PATH="$PNPM_HOME:$PATH"
+
+    export EDITOR="lvim"
 fi
