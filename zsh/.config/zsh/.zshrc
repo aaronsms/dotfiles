@@ -41,3 +41,5 @@ zsh_add_file "zsh-aliases"
 zsh_add_plugin "lukechilds/zsh-nvm"
 zsh_add_plugin "zsh-users/zsh-autosuggestions"
 source /usr/share/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh 2>/dev/null
+emulate ksh -c '. "$ZDOTDIR/ssh-find-agent.sh"'
+ssh_find_agent -a || eval "$(ssh-agent)" > /dev/null

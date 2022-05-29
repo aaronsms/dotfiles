@@ -161,6 +161,7 @@ linters.setup({
 
 -- additional plugins
 lvim.plugins = {
+  { "EdenEast/nightfox.nvim" },
   { "folke/tokyonight.nvim" },
   { "cocopon/iceberg.vim" },
   { "shaunsingh/nord.nvim" },

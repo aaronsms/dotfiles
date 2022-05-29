@@ -44,6 +44,7 @@ lfcd () {
     fi
 }
 bindkey -s '^o' 'lfcd\n'
+bindkey -s '^s' 'eval $(ssh-agent) && ssh-add\n'
 bindkey -s '^a' 'bc -lq\n'
 bindkey -s '^f' 'cd "$(dirname "$(fzf)")"\n'
 bindkey '^p' history-incremental-search-backward
