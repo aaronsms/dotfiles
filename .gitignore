@@ -6,3 +6,4 @@ zsh/.config/zsh/.zsh_sessions
 zsh/.config/zsh/.zsh_history
 lvim/.config/lvim/plugin/packer_compiled.lua
 **/.env
+**/current-theme.conf
