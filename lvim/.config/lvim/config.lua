@@ -46,6 +46,37 @@ lvim.keys.insert_mode["k"] = { "k", { noremap = true } }
 vim.g.copilot_no_tab_map = true
 vim.cmd([[imap <silent><script><expr> <C-A-n> copilot#Accept("\<CR>")]])
 
+vim.api.nvim_create_user_command("ToggleTodoMark", function()
+	local current_line = vim.fn.getline(".")
+	if current_line:match("^- %[ %] ") then
+		vim.fn.setline(".", "- [X] " .. current_line:sub(7))
+	elseif current_line:match("^- %[X%] ") then
+		vim.fn.setline(".", "- [ ] " .. current_line:sub(7))
+	else
+		vim.fn.setline(".", "- [ ] " .. current_line)
+		local pos = vim.fn.getcurpos()
+    local lnum = pos[2]
+    local col = pos[3]
+		vim.fn.cursor({ lnum, col + 6 })
+	end
+end, { bang = true })
+
+vim.api.nvim_create_user_command("ToggleTodoAdd", function()
+	local current_line = vim.fn.getline(".")
+	if current_line:match("^- %[ %] ") or current_line:match("^- %[X%] ") then
+		vim.fn.setline(".", current_line:sub(7))
+	else
+		vim.fn.setline(".", "- [ ] " .. current_line)
+		local pos = vim.fn.getcurpos()
+    local lnum = pos[2]
+    local col = pos[3]
+		vim.fn.cursor({ lnum, col + 6 })
+	end
+end, { bang = true })
+
+lvim.keys.normal_mode["ta"] = { "<cmd>ToggleTodoAdd<cr>", { noremap = true } }
+lvim.keys.normal_mode["td"] = { "<cmd>ToggleTodoMark<cr>", { noremap = true } }
+
 lvim.keys.normal_mode["tt"] = { "<cmd>TroubleToggle<cr>", { noremap = true } }
 lvim.keys.normal_mode["tr"] = { "<cmd>setlocal readonly!<cr>", { noremap = true } }
 lvim.keys.normal_mode["ts"] = { "<cmd>setlocal spell!<cr>", { noremap = true } }
@@ -78,6 +109,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
 	pattern = { "*.md" },
 	callback = function()
 		vim.opt_local.filetype = "markdown.pandoc"
+		vim.g.cmp_toggle_flag = false
+		vim.cmd([[Goyo]])
 	end,
 })
 
