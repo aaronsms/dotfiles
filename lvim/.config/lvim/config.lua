@@ -21,6 +21,10 @@ vim.g.tokyonight_style = "night"
 vim.g.gruvbox_contrast_dark = "medium"
 vim.g.cmp_toggle_flag = true
 
+vim.g.goyo_width = 84
+-- vim.g.goyo_height = '85%'
+vim.g.goyo_linenr = 0
+
 -- vim.g.slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
 -- vim.g.slimv_lisp = "ros run"
 -- vim.g.slimv_impl = "sbcl"
@@ -74,8 +78,8 @@ vim.api.nvim_create_user_command("ToggleTodoAdd", function()
 	end
 end, { bang = true })
 
-lvim.keys.normal_mode["ta"] = { "<cmd>ToggleTodoAdd<cr>", { noremap = true } }
-lvim.keys.normal_mode["td"] = { "<cmd>ToggleTodoMark<cr>", { noremap = true } }
+lvim.keys.normal_mode["td"] = { "<cmd>ToggleTodoAdd<cr>", { noremap = true } }
+lvim.keys.normal_mode["ta"] = { "<cmd>ToggleTodoMark<cr>", { noremap = true } }
 
 lvim.keys.normal_mode["tt"] = { "<cmd>TroubleToggle<cr>", { noremap = true } }
 lvim.keys.normal_mode["tr"] = { "<cmd>setlocal readonly!<cr>", { noremap = true } }
