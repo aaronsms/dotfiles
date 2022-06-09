@@ -20,6 +20,7 @@ vim.g.nord_contrast = true
 vim.g.tokyonight_style = "night"
 vim.g.gruvbox_contrast_dark = "medium"
 vim.g.cmp_toggle_flag = true
+vim.g.copilot_toggle_flag = true
 
 vim.g.goyo_width = 84
 -- vim.g.goyo_height = '85%'
@@ -47,6 +48,9 @@ lvim.keys.visual_mode["K"] = "K"
 lvim.keys.insert_mode["j"] = { "j", { noremap = true } }
 lvim.keys.insert_mode["k"] = { "k", { noremap = true } }
 
+vim.g.copilot_filetypes = {
+	["*"] = false,
+}
 vim.g.copilot_no_tab_map = true
 vim.cmd([[imap <silent><script><expr> <C-A-n> copilot#Accept("\<CR>")]])
 
@@ -59,8 +63,8 @@ vim.api.nvim_create_user_command("ToggleTodoMark", function()
 	else
 		vim.fn.setline(".", "- [ ] " .. current_line)
 		local pos = vim.fn.getcurpos()
-    local lnum = pos[2]
-    local col = pos[3]
+		local lnum = pos[2]
+		local col = pos[3]
 		vim.fn.cursor({ lnum, col + 6 })
 	end
 end, { bang = true })
@@ -72,8 +76,8 @@ vim.api.nvim_create_user_command("ToggleTodoAdd", function()
 	else
 		vim.fn.setline(".", "- [ ] " .. current_line)
 		local pos = vim.fn.getcurpos()
-    local lnum = pos[2]
-    local col = pos[3]
+		local lnum = pos[2]
+		local col = pos[3]
 		vim.fn.cursor({ lnum, col + 6 })
 	end
 end, { bang = true })
@@ -114,7 +118,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
 	callback = function()
 		vim.opt_local.filetype = "markdown.pandoc"
 		vim.g.cmp_toggle_flag = false
-		vim.cmd([[Goyo]])
 	end,
 })
 
