@@ -7,9 +7,10 @@ lvim.transparent_window = true
 
 -- native
 vim.opt.cmdheight = 1
-vim.opt.smartindent = false
-vim.opt.relativenumber = true
+vim.opt.conceallevel = 2
 vim.opt.cursorline = false
+vim.opt.relativenumber = true
+vim.opt.smartindent = false
 
 vim.g.loaded_python_provider = 0
 vim.g.loaded_ruby_provider = 0
@@ -118,6 +119,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
 	callback = function()
 		vim.opt_local.filetype = "markdown.pandoc"
 		vim.g.cmp_toggle_flag = false
+    vim.cmd("TSBufDisable highlight")
 	end,
 })
 
@@ -222,11 +224,7 @@ lvim.plugins = {
 	{
 		"lervag/vimtex",
 		config = function()
-			vim.g.tex_flavor = "latex"
 			vim.g.vimtex_view_method = "zathura"
-			vim.g.vimtex_quickfix_mode = 0
-			vim.g.tex_conceal = "abdmg"
-			vim.cmd("hi Conceal guibg=none ctermbg=none")
 		end,
 		ft = "tex",
 	},
