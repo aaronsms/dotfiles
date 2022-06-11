@@ -52,8 +52,11 @@ lvim.keys.insert_mode["k"] = { "k", { noremap = true } }
 vim.g.copilot_filetypes = {
 	["*"] = false,
 }
-vim.g.copilot_no_tab_map = true
 vim.cmd([[imap <silent><script><expr> <C-A-n> copilot#Accept("\<CR>")]])
+vim.api.nvim_create_user_command("ToggleCopilot", function()
+  vim.b.copilot_enabled = not vim.b.copilot_enabled
+end, {bang = true}
+)
 
 vim.api.nvim_create_user_command("ToggleTodoMark", function()
 	local current_line = vim.fn.getline(".")
@@ -85,12 +88,14 @@ end, { bang = true })
 
 lvim.keys.normal_mode["td"] = { "<cmd>ToggleTodoAdd<cr>", { noremap = true } }
 lvim.keys.normal_mode["ta"] = { "<cmd>ToggleTodoMark<cr>", { noremap = true } }
-
+lvim.keys.normal_mode["tx"] = { "<cmd>ToggleCopilot<cr>", { noremap = true } }
 lvim.keys.normal_mode["tt"] = { "<cmd>TroubleToggle<cr>", { noremap = true } }
+lvim.keys.normal_mode["tg"] = { "<cmd>Goyo<cr>", { noremap = true } }
+
+lvim.keys.normal_mode["tn"] = { "<cmd>r !date '+Last modified: \\%a, \\%d \\%b \\%Y, \\%H:\\%m'<cr>", { noremap = true } }
 lvim.keys.normal_mode["tr"] = { "<cmd>setlocal readonly!<cr>", { noremap = true } }
 lvim.keys.normal_mode["ts"] = { "<cmd>setlocal spell!<cr>", { noremap = true } }
 lvim.keys.normal_mode["tl"] = { "<cmd>setlocal list!<cr>", { noremap = true } }
-lvim.keys.normal_mode["tg"] = { "<cmd>Goyo<cr>", { noremap = true } }
 lvim.keys.normal_mode["tc"] = { "<cmd>lua vim.g.cmp_toggle_flag=not vim.g.cmp_toggle_flag<cr>", { noremap = true } }
 lvim.keys.normal_mode["tr"] = { "<cmd>LspRestart<cr>", { noremap = true } }
 
@@ -105,7 +110,22 @@ lvim.keys.normal_mode["<Space>4"] = { "<cmd>lua require('harpoon.ui').nav_file(4
 lvim.keys.normal_mode["<Space>9"] = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { noremap = true } }
 lvim.keys.normal_mode["<Space>0"] = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", { noremap = true } }
 
--- autocommands
+local function init_templates()
+	local popen = io.popen
+	local pfile = popen('ls ~/templates')
+	if pfile == nil then
+		return
+	end
+	for filename in pfile:lines() do
+		vim.api.nvim_create_autocmd({ "BufNewFile" }, {
+			pattern = { filename },
+			command = "0r ~/templates/" .. filename,
+		})
+	end
+	pfile:close()
+end
+init_templates()
+
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
 	pattern = { "*.md", "*.tex", "*.txt" },
 	callback = function()
@@ -119,7 +139,7 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufFilePre", "BufRead" }, {
 	callback = function()
 		vim.opt_local.filetype = "markdown.pandoc"
 		vim.g.cmp_toggle_flag = false
-    vim.cmd("TSBufDisable highlight")
+		vim.cmd("TSBufDisable highlight")
 	end,
 })
 
