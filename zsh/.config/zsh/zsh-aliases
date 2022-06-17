@@ -3,7 +3,7 @@
 alias j="journal"
 alias n="note"
 alias s="kitty +kitten ssh"
-alias ldown='cd ~/luminus-downloader && nvm run 16 main.js && pd'
+alias ldown='cd ~/.local/src/luminus-downloader && nvm run 16 main.js && pd'
 alias ariad="aria2c --conf-path=\$HOME/.config/aria2/aria2.daemon"
 alias rc="cd ~/current && lfcd"
 alias rn="cd ~/notes && lfcd"
@@ -13,6 +13,7 @@ alias ta="tmux attach 2>/dev/null || tmux"
 alias tk="tmux kill-server 2>/dev/null"
 alias ez="exec zsh"
 alias sshk="kitty +kitten ssh"
+alias xc="xclip -selection clipboard"
 
 [ -x "$(command -v nvim)" ] && alias vim="nvim" vimdiff="nvim -d"
 [ -f "$XINITRC" ] && alias startx='startx $XINITRC'

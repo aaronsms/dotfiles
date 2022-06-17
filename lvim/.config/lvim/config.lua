@@ -3,7 +3,7 @@ lvim.leader = "space"
 lvim.log.level = "warn"
 lvim.colorscheme = "tokyonight"
 lvim.format_on_save = false
-lvim.transparent_window = true
+lvim.transparent_window = false
 
 -- native
 vim.opt.cmdheight = 1
