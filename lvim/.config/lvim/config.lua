@@ -24,7 +24,6 @@ vim.g.cmp_toggle_flag = true
 vim.g.copilot_toggle_flag = true
 
 vim.g.goyo_width = 84
--- vim.g.goyo_height = '85%'
 vim.g.goyo_linenr = 0
 
 -- vim.g.slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
@@ -48,15 +47,6 @@ lvim.keys.visual_mode["K"] = "K"
 
 lvim.keys.insert_mode["j"] = { "j", { noremap = true } }
 lvim.keys.insert_mode["k"] = { "k", { noremap = true } }
-
-vim.g.copilot_filetypes = {
-	["*"] = false,
-}
-vim.cmd([[imap <silent><script><expr> <C-A-n> copilot#Accept("\<CR>")]])
-vim.api.nvim_create_user_command("ToggleCopilot", function()
-  vim.b.copilot_enabled = not vim.b.copilot_enabled
-end, {bang = true}
-)
 
 vim.api.nvim_create_user_command("ToggleTodoMark", function()
 	local current_line = vim.fn.getline(".")
@@ -88,7 +78,6 @@ end, { bang = true })
 
 lvim.keys.normal_mode["td"] = { "<cmd>ToggleTodoAdd<cr>", { noremap = true } }
 lvim.keys.normal_mode["ta"] = { "<cmd>ToggleTodoMark<cr>", { noremap = true } }
-lvim.keys.normal_mode["tx"] = { "<cmd>ToggleCopilot<cr>", { noremap = true } }
 lvim.keys.normal_mode["tt"] = { "<cmd>TroubleToggle<cr>", { noremap = true } }
 lvim.keys.normal_mode["tg"] = { "<cmd>Goyo<cr>", { noremap = true } }
 
