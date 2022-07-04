@@ -50,10 +50,10 @@ lvim.keys.insert_mode["k"] = { "k", { noremap = true } }
 
 vim.api.nvim_create_user_command("ToggleTodoMark", function()
 	local current_line = vim.fn.getline(".")
-	if current_line:match("^- %[ %] ") then
-		vim.fn.setline(".", "- [X] " .. current_line:sub(7))
-	elseif current_line:match("^- %[X%] ") then
-		vim.fn.setline(".", "- [ ] " .. current_line:sub(7))
+  if string.match(current_line, "^- %[ %] ") then
+		vim.fn.setline(".", "- [X] " .. string.sub(current_line, 7))
+	elseif string.match(current_line, "^- %[X%] ") then
+		vim.fn.setline(".", "- [ ] " .. string.sub(current_line, 7))
 	else
 		vim.fn.setline(".", "- [ ] " .. current_line)
 		local pos = vim.fn.getcurpos()
@@ -65,8 +65,8 @@ end, { bang = true })
 
 vim.api.nvim_create_user_command("ToggleTodoAdd", function()
 	local current_line = vim.fn.getline(".")
-	if current_line:match("^- %[ %] ") or current_line:match("^- %[X%] ") then
-		vim.fn.setline(".", current_line:sub(7))
+  if string.match(current_line, "^- %[ %] ") or string.match(current_line, "^- %[X%] ") then
+		vim.fn.setline(".", string.sub(current_line, 7))
 	else
 		vim.fn.setline(".", "- [ ] " .. current_line)
 		local pos = vim.fn.getcurpos()
