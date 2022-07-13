@@ -75,12 +75,21 @@ vim.api.nvim_create_user_command("ToggleTodoAdd", function()
   end
 end, { bang = true })
 
+vim.api.nvim_create_user_command("BufferLineCloseAll", function()
+  vim.cmd("BufferLineCloseLeft")
+  vim.cmd("BufferLineCloseRight")
+end, { bang = true })
+lvim.keys.normal_mode["<Space>c"] = { "<cmd>BufferLineCloseAll<cr>", { noremap = true } }
+
 lvim.keys.normal_mode["td"] = { "<cmd>ToggleTodoAdd<cr>", { noremap = true } }
 lvim.keys.normal_mode["ta"] = { "<cmd>ToggleTodoMark<cr>", { noremap = true } }
 lvim.keys.normal_mode["tt"] = { "<cmd>TroubleToggle<cr>", { noremap = true } }
 lvim.keys.normal_mode["tg"] = { "<cmd>Goyo<cr>", { noremap = true } }
 
-lvim.keys.normal_mode["tn"] = { "<cmd>r !date '+Last modified: \\%a, \\%d \\%b \\%Y, \\%H:\\%m'<cr>", { noremap = true } }
+lvim.keys.normal_mode["tn"] = {
+  "<cmd>r !date '+Last modified: \\%a, \\%d \\%b \\%Y, \\%H:\\%m'<cr>",
+  { noremap = true },
+}
 lvim.keys.normal_mode["tr"] = { "<cmd>setlocal readonly!<cr>", { noremap = true } }
 lvim.keys.normal_mode["ts"] = { "<cmd>setlocal spell!<cr>", { noremap = true } }
 lvim.keys.normal_mode["tl"] = { "<cmd>setlocal list!<cr>", { noremap = true } }
@@ -94,13 +103,12 @@ lvim.keys.normal_mode["<Space>1"] = { "<cmd>lua require('harpoon.ui').nav_file(1
 lvim.keys.normal_mode["<Space>2"] = { "<cmd>lua require('harpoon.ui').nav_file(2)<cr>", { noremap = true } }
 lvim.keys.normal_mode["<Space>3"] = { "<cmd>lua require('harpoon.ui').nav_file(3)<cr>", { noremap = true } }
 lvim.keys.normal_mode["<Space>4"] = { "<cmd>lua require('harpoon.ui').nav_file(4)<cr>", { noremap = true } }
-
 lvim.keys.normal_mode["<Space>9"] = { "<cmd>lua require('harpoon.ui').nav_prev()<cr>", { noremap = true } }
 lvim.keys.normal_mode["<Space>0"] = { "<cmd>lua require('harpoon.ui').nav_next()<cr>", { noremap = true } }
 
 local function init_templates()
   local popen = io.popen
-  local pfile = popen('ls ~/templates')
+  local pfile = popen("ls ~/templates")
   if pfile == nil then
     return
   end
