@@ -25,10 +25,6 @@ vim.g.cmp_toggle_flag = true
 vim.g.goyo_width = 84
 vim.g.goyo_linenr = 0
 
--- vim.g.slimv_swank_cmd = "!ros -e '(ql:quickload :swank) (swank:create-server)' wait &"
--- vim.g.slimv_lisp = "ros run"
--- vim.g.slimv_impl = "sbcl"
-
 -- keymappings
 lvim.keys.normal_mode["Y"] = { "y$", { noremap = true } }
 lvim.keys.visual_mode["y"] = { "mzy`z", { noremap = true } }
@@ -218,10 +214,7 @@ local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
   { command = "flake8", filetypes = { "python" } },
   { command = "eslint", filetypes = { "typescript" } },
-  {
-    command = "shellcheck",
-    -- extra_args = { "--severity", "warning" },
-  },
+  { command = "shellcheck" },
 })
 
 -- additional plugins
