@@ -75,7 +75,7 @@ vim.api.nvim_create_user_command("BufferLineCloseAll", function()
   vim.cmd("BufferLineCloseLeft")
   vim.cmd("BufferLineCloseRight")
 end, { bang = true })
-lvim.keys.normal_mode["<Space>c"] = { "<cmd>BufferLineCloseAll<cr>", { noremap = true } }
+lvim.builtin.which_key.mappings.c = { "<cmd>BufferLineCloseAll<CR>", "Close all buffers except current" }
 
 lvim.keys.normal_mode["td"] = { "<cmd>ToggleTodoAdd<cr>", { noremap = true } }
 lvim.keys.normal_mode["ta"] = { "<cmd>ToggleTodoMark<cr>", { noremap = true } }
