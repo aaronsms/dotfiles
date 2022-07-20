@@ -21,3 +21,11 @@ if type pyenv > /dev/null; then
         pyenv $@
     }
 fi
+
+if type gvm > /dev/null; then
+    function go() {
+        unset -f go
+        gvm use go
+        go $@
+    }
+fi
